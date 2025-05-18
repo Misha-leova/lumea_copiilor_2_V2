@@ -1,0 +1,10 @@
+﻿Example URLs Generated
+Acasă: /user (calls UserPagesController.Home()).
+
+Categorii: /user/market (calls UserPagesController.Market()).
+
+Noutăți: /user/news (calls UserPagesController.News()).
+
+Promoții: /user/promotions (calls UserPagesController.Promotions()).
+
+Contacte: /user/contact (calls UserPagesController.Contact()).

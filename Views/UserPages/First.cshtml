@@ -1,0 +1,423 @@
+﻿@{
+    ViewData["Title"] = "Acasă";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+
+}
+
+<!-- Hero Banner -->
+<div class="hero-banner rounded mb-4">
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h1 class="display-4 fw-bold text-white">Bine ai venit în Lumea Jucăriilor!</h1>
+                <p class="lead text-white">Descoperă universul magic al jucăriilor unde fiecare zi este o nouă aventură!</p>
+                <div class="mt-4">
+                    <a  class="btn btn-toy btn-lg me-2" asp-controller="UserPages" asp-action="Market">Explorează jucăriile</a>
+                    <a href="#promotii" class="btn btn-light btn-lg">Vezi promoțiile</a>
+                </div>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="https://etimg.etb2bimg.com/thumb/msid-94749754,imgsize-148476,width-1200,height=765,overlay-etretail/toys-kids-and-baby/toys/toy-industry-can-generate-30000-jobs-in-tn-with-govt-support.jpg" alt="Copii fericiți cu jucării" class="img-fluid rounded animated-float" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Categorii Populare -->
+<section id="categorii" class="mb-5">
+    <div class="section-header text-center mb-4">
+        <h2 class="display-5 fw-bold">Categorii populare</h2>
+        <p class="text-muted">Descoperă cele mai îndrăgite jucării pentru copilul tău</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 mb-4">
+            <div class="category-card h-100">
+                <img src="data:image/jpeg;base64,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" alt="Jucării educative" class="card-img-top" />
+                <div class="card-body text-center">
+                    <h4 class="card-title">Jucării educative</h4>
+                    <p class="card-text">Învățare prin joacă și descoperire</p>
+                    <a href="#" class="btn btn-toy">Descoperă</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="category-card h-100">
+                <img src="https://m.media-amazon.com/images/I/51lxFyn9iYL._AC_UF1000,1000_QL80_.jpg" alt="Păpuși și accesorii" class="card-img-top" />
+                <div class="card-body text-center">
+                    <h4 class="card-title">Păpuși și accesorii</h4>
+                    <p class="card-text">Prieteni de joacă pentru cei mici</p>
+                    <a href="#" class="btn btn-toy">Descoperă</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="category-card h-100">
+                <img src="https://i.ebayimg.com/images/g/VEcAAOSwVfdjpJZJ/s-l1200.jpg" alt="Mașinuțe și vehicule" class="card-img-top" />
+                <div class="card-body text-center">
+                    <h4 class="card-title">Mașinuțe și vehicule</h4>
+                    <p class="card-text">Aventuri de neuitat pe patru roți</p>
+                    <a href="#" class="btn btn-toy">Descoperă</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="category-card h-100">
+                <img src="https://www.thetoychronicle.com/wp-content/uploads/2024/10/Kong-Andri-x-Museum-of-Toys-Presents-PORTER-BOY-Urban-Sneaker-Society-Exclusive.jpg" alt="Jocuri de societate" class="card-img-top" />
+                <div class="card-body text-center">
+                    <h4 class="card-title">Jocuri de societate</h4>
+                    <p class="card-text">Distracție pentru toată familia</p>
+                    <a href="#" class="btn btn-toy">Descoperă</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-3">
+        <a href="#" class="btn btn-lg btn-outline-primary see-all-btn">Vezi toate categoriile <i class="fas fa-arrow-right ms-2"></i></a>
+    </div>
+</section>
+
+<!-- Banner promoții -->
+<section id="promotii" class="mb-5">
+    <div class="promo-banner rounded py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-7">
+                    <h2 class="display-6 text-white fw-bold">Super reduceri de primăvară!</h2>
+                    <p class="lead text-white">Până la 50% reducere la jucăriile preferate în perioada 10-20 martie</p>
+                    <a href="#" class="btn btn-light btn-lg mt-3">Profită acum</a>
+                </div>
+                <div class="col-md-5 text-center">
+                    <div class="discount-badge">
+                        <span class="display-4 fw-bold">-50%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Avantaje -->
+<section class="features-section mb-5 py-4 rounded">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-3 mb-4 mb-md-0">
+                <div class="feature-item">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-truck fa-3x"></i>
+                    </div>
+                    <h4>Livrare gratuită</h4>
+                    <p>Pentru comenzi peste 200 lei</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4 mb-md-0">
+                <div class="feature-item">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-shield-alt fa-3x"></i>
+                    </div>
+                    <h4>Garanție de calitate</h4>
+                    <p>Toate produsele sunt verificate</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4 mb-md-0">
+                <div class="feature-item">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-exchange-alt fa-3x"></i>
+                    </div>
+                    <h4>Returnare ușoară</h4>
+                    <p>30 de zile pentru returnare</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="feature-item">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-headset fa-3x"></i>
+                    </div>
+                    <h4>Suport 24/7</h4>
+                    <p>Suntem mereu aici să te ajutăm</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimoniale -->
+<section class="testimonials-section mb-5">
+    <div class="section-header text-center mb-4">
+        <h2 class="display-5 fw-bold">Ce spun clienții noștri</h2>
+        <p class="text-muted">Experiențe reale ale familiilor fericite</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="testimonial-card p-4 rounded h-100">
+                <div class="testimonial-rating mb-3">
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                </div>
+                <p class="testimonial-text">"Jucăriile educative sunt extraordinare! Fiica mea a învățat literele și numerele jucându-se. Livrarea a fost rapidă și ambalajul foarte sigur."</p>
+                <div class="testimonial-author d-flex align-items-center mt-3">
+                    <img src="https://people.com/thmb/gzHtG_UnZBsUuHVJx9xjB5yAfIQ=/4000x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(399x0:401x2)/people-headshot-nick-maslow-f21ef38676504bc89a091ec9a5c95e4b.jpg" />
+                    <div>
+                        <h5 class="mb-0">Ana Popescu</h5>
+                        <small class="text-muted">Mamă a 2 copii</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="testimonial-card p-4 rounded h-100">
+                <div class="testimonial-rating mb-3">
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                </div>
+                <p class="testimonial-text">"Sunt foarte mulțumit de calitatea jucăriilor. Fiul meu adoră seturile LEGO, iar prețurile sunt mult mai bune decât în alte magazine. Recomand cu încredere!"</p>
+                <div class="testimonial-author d-flex align-items-center mt-3">
+                    <img src="https://www.allprodad.com/wp-content/uploads/2021/03/05-12-21-happy-people.jpg" alt="Client" class="rounded-circle me-3" />
+                    <div>
+                        <h5 class="mb-0">Mihai Ionescu</h5>
+                        <small class="text-muted">Tată și profesor</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="testimonial-card p-4 rounded h-100">
+                <div class="testimonial-rating mb-3">
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star-half-alt text-warning"></i>
+                </div>
+                <p class="testimonial-text">"Serviciul clienți este excepțional! Am avut o mică problemă cu o comandă și a fost rezolvată în aceeași zi. Jocurile de societate sunt perfecte pentru serile în familie."</p>
+                <div class="testimonial-author d-flex align-items-center mt-3">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShkv_Hr6sv5PmBN_BVwnrDxDtBBEOv6N9ID-JBtBcxcGXPwaiZk8pPuHJ8o6moKejtlJ8&usqp=CAU" alt="Client" class="rounded-circle me-3" />
+                    <div>
+                        <h5 class="mb-0">Elena Dumitrescu</h5>
+                        <small class="text-muted">Clientă fidelă</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter -->
+<section class="newsletter-section rounded mb-5 p-4">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <h3 class="text-white mb-2">Abonează-te la newsletter</h3>
+            <p class="text-white mb-0">Primește noutăți despre promoții și jucării noi</p>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group">
+                <input type="email" class="form-control" placeholder="Adresa ta de email" aria-label="Email" aria-describedby="button-addon2">
+                <button class="btn btn-light" type="button" id="button-addon2">Abonare</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Hero Banner */
+    .hero-banner {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        overflow: hidden;
+        position: relative;
+    }
+
+    .animated-float {
+        animation: float 6s ease-in-out infinite;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    @@keyframes float {
+        0% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(-20px);
+        }
+
+        100% {
+            transform: translateY(0px);
+        }
+    }
+
+    /* Categorii */
+    .category-card {
+        border: none;
+        background-color: white;
+        transition: all 0.3s;
+    }
+
+        .category-card:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+    .see-all-btn {
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
+        font-weight: bold;
+        padding: 10px 30px;
+    }
+
+        .see-all-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+    /* Promo Banner */
+    .promo-banner {
+        background: linear-gradient(135deg, #FF416C, #FF4B2B);
+        overflow: hidden;
+    }
+
+    .discount-badge {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        margin: 0 auto;
+        animation: pulse 2s infinite;
+    }
+
+    @@keyframes pulse {
+        0% {
+            transform: scale(1);
+            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5);
+        }
+
+        70% {
+            transform: scale(1.05);
+            box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    /* Produse */
+    .product-card {
+        border-radius: 15px;
+        background-color: white;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        transition: all 0.3s;
+        overflow: hidden;
+        position: relative;
+    }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+        }
+
+    .badge-new {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: var(--accent-color);
+        color: var(--dark-color);
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+    }
+
+    .product-title {
+        height: 48px;
+        overflow: hidden;
+        margin-bottom: 10px;
+    }
+
+    .price-new {
+        color: var(--primary-color);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+
+    /* Vârstă și branduri */
+    .age-section, .brands-section {
+        background-color: white;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        height: 100%;
+    }
+
+    .age-category {
+        padding: 10px;
+        border-radius: 10px;
+        transition: all 0.3s;
+    }
+
+        .age-category:hover {
+            background-color: rgba(255, 107, 107, 0.1);
+        }
+
+    .age-icon {
+        color: var(--primary-color);
+    }
+
+    .brand-logo {
+        border: 1px solid #eee;
+        border-radius: 10px;
+        transition: all 0.3s;
+    }
+
+        .brand-logo:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+    /* Features */
+    .features-section {
+        background-color: white;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .feature-icon {
+        color: var(--primary-color);
+    }
+
+    .feature-item {
+        padding: 20px;
+        transition: all 0.3s;
+    }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+
+    /* Testimoniale */
+    .testimonial-card {
+        background-color: white;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        transition: all 0.3s;
+    }
+
+        .testimonial-card:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+    .testimonial-text {
+        font-style: italic;
+        line-height: 1.6;
+    }
+
+    /* Newsletter */
+    .newsletter-section {
+        background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    }
+</style>

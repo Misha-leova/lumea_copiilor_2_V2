@@ -1,0 +1,325 @@
+﻿@{
+    ViewData["Title"] = "Contact";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+
+}
+
+<div class="contact-hero my-4">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h1 class="display-4 fw-bold text-primary">Contactează-ne</h1>
+                <p class="lead">Suntem aici pentru tine! Contactează-ne pentru orice întrebare despre produsele sau serviciile noastre.</p>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="https://www.icmi.com/~/media/ICMI/ICMI-Article-Images/friendly-robot.ashx" alt="Serviciu clienți" class="img-fluid rounded shadow-lg" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <!-- Metodele de contact -->
+    <div class="row mb-5">
+        <div class="col-lg-4 mb-4">
+            <div class="category-card h-100 text-center p-4">
+                <i class="fas fa-map-marker-alt fa-3x text-primary mb-3"></i>
+                <h3>Vizitează-ne</h3>
+                <address class="mb-0">
+                    <p>Strada Jucăriilor, Nr. 123</p>
+                    <p>Sector 1, București</p>
+                    <p>România, 010101</p>
+                </address>
+                <p class="mt-3"><strong>Program:</strong><br>Luni - Vineri: 9:00 - 18:00<br>Sâmbătă: 10:00 - 14:00<br>Duminică: Închis</p>
+            </div>
+        </div>
+
+        <div class="col-lg-4 mb-4">
+            <div class="category-card h-100 text-center p-4">
+                <i class="fas fa-phone-alt fa-3x text-primary mb-3"></i>
+                <h3>Sună-ne</h3>
+                <p class="mb-2"><strong>Departament Vânzări:</strong><br>0720 123 456</p>
+                <p class="mb-2"><strong>Serviciu Clienți:</strong><br>0730 789 012</p>
+                <p class="mb-2"><strong>Relații Corporative:</strong><br>0740 345 678</p>
+                <p class="mt-3"><strong>Program telefonic:</strong><br>Luni - Vineri: 8:00 - 20:00<br>Sâmbătă: 9:00 - 15:00</p>
+            </div>
+        </div>
+
+        <div class="col-lg-4 mb-4">
+            <div class="category-card h-100 text-center p-4">
+                <i class="fas fa-envelope fa-3x text-primary mb-3"></i>
+                <h3>Scrie-ne</h3>
+                <p class="mb-2"><strong>Informații Generale:</strong><br>info@jucariifericitoare.ro</p>
+                <p class="mb-2"><strong>Suport Clienți:</strong><br>suport@jucariifericitoare.ro</p>
+                <p class="mb-2"><strong>Reclamații:</strong><br>reclamatii@jucariifericitoare.ro</p>
+                <p class="mb-2"><strong>Cariere:</strong><br>cariere@jucariifericitoare.ro</p>
+                <p class="mt-3">Răspundem în maxim 24 de ore în zilele lucrătoare!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formular de contact -->
+    <div class="row mb-5">
+        <div class="col-lg-8 mx-auto">
+            <div class="category-card p-4">
+                <h2 class="text-center mb-4">Formular de Contact</h2>
+                <p class="text-center mb-4">Completează formularul de mai jos și te vom contacta cât mai curând posibil.</p>
+
+                <form id="contactForm">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="nume" class="form-label">Nume complet *</label>
+                            <input type="text" class="form-control" id="nume" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="email" class="form-label">Email *</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="telefon" class="form-label">Telefon</label>
+                            <input type="tel" class="form-control" id="telefon">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="subiect" class="form-label">Subiect *</label>
+                            <select class="form-select" id="subiect" required>
+                                <option value="" selected disabled>Selectează un subiect</option>
+                                <option value="intrebare">Întrebare despre un produs</option>
+                                <option value="comanda">Informații despre comandă</option>
+                                <option value="retur">Retur sau schimb</option>
+                                <option value="reclamatie">Reclamație</option>
+                                <option value="sugestie">Sugestie</option>
+                                <option value="altele">Altele</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="mesaj" class="form-label">Mesajul tău *</label>
+                        <textarea class="form-control" id="mesaj" rows="5" required></textarea>
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="acord" required>
+                        <label class="form-check-label" for="acord">Sunt de acord cu <a href="#">prelucrarea datelor mele personale</a> *</label>
+                    </div>
+
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="newsletter">
+                        <label class="form-check-label" for="newsletter">Doresc să primesc newsletter-ul cu oferte și noutăți</label>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-toy btn-lg px-5">Trimite Mesajul</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ-uri -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="category-card p-4">
+                <h2 class="text-center mb-4">Întrebări Frecvente</h2>
+
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Cât durează livrarea comenzilor?
+                            </button>
+                        </h3>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Livrarea standard durează între 1-3 zile lucrătoare pentru localitățile urbane și 2-5 zile lucrătoare pentru localitățile rurale. Pentru comenzile urgente, oferim și opțiunea de livrare express în 24 de ore în orașe mari.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Care sunt metodele de plată acceptate?
+                            </button>
+                        </h3>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Acceptăm plata cu cardul (Visa, Mastercard), transfer bancar, ramburs la livrare și plata prin PayPal. Pentru comenzile online, oferim și opțiunea de plată în rate prin partenerii noștri bancari.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Cum pot returna un produs?
+                            </button>
+                        </h3>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Poți returna orice produs în termen de 30 de zile de la primirea comenzii. Produsul trebuie să fie în starea originală, nefolosit și cu ambalajul intact. Pentru a iniția un retur, te rugăm să completezi formularul din secțiunea "Contul meu" sau să ne contactezi telefonic.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Oferiți garanție pentru produse?
+                            </button>
+                        </h3>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Da, toate produsele noastre beneficiază de garanție legală de conformitate. În plus, pentru multe produse oferim garanție extinsă între 1-5 ani, în funcție de categoria produsului. Detaliile specifice despre garanție sunt menționate în fișa fiecărui produs.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header" id="headingFive">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                Ce fac dacă produsul primit este deteriorat?
+                            </button>
+                        </h3>
+                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                În cazul în care primești un produs deteriorat, te rugăm să ne contactezi în termen de 48 de ore cu dovezi fotografice. Vom aranja rapid înlocuirea produsului sau rambursarea banilor, în funcție de preferința ta. Ne cerem scuze pentru orice inconvenient!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Harta -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="category-card p-4">
+                <h2 class="text-center mb-4">Găsește-ne pe Hartă</h2>
+                <div class="embed-responsive">
+                    <img src="/api/placeholder/1200/400" alt="Hartă locație magazin" class="img-fluid rounded" />
+                    <div class="text-center mt-3">
+                        <a href="#" class="btn btn-toy">Deschide în Google Maps</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Magazinele noastre -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="category-card p-4">
+                <h2 class="text-center mb-4">Magazinele Noastre</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="store-card p-3 border rounded">
+                            <h4>București - Magazin Central</h4>
+                            <p><i class="fas fa-map-marker-alt me-2"></i> Strada Jucăriilor, Nr. 123, Sector 1</p>
+                            <p><i class="fas fa-phone-alt me-2"></i> 0720 123 456</p>
+                            <p><i class="fas fa-clock me-2"></i> Luni-Vineri: 9:00-18:00</p>
+                            <p><i class="fas fa-clock me-2"></i> Sâmbătă: 10:00-14:00</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="store-card p-3 border rounded">
+                            <h4>Cluj-Napoca</h4>
+                            <p><i class="fas fa-map-marker-alt me-2"></i> Bulevardul Eroilor, Nr. 45</p>
+                            <p><i class="fas fa-phone-alt me-2"></i> 0720 789 012</p>
+                            <p><i class="fas fa-clock me-2"></i> Luni-Vineri: 9:00-18:00</p>
+                            <p><i class="fas fa-clock me-2"></i> Sâmbătă: 10:00-14:00</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="store-card p-3 border rounded">
+                            <h4>Timișoara</h4>
+                            <p><i class="fas fa-map-marker-alt me-2"></i> Strada Copiilor, Nr. 78</p>
+                            <p><i class="fas fa-phone-alt me-2"></i> 0720 345 678</p>
+                            <p><i class="fas fa-clock me-2"></i> Luni-Vineri: 9:00-18:00</p>
+                            <p><i class="fas fa-clock me-2"></i> Sâmbătă: 10:00-14:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Social Media -->
+    <div class="row mt-4 mb-5">
+        <div class="col-12">
+            <div class="category-card bg-accent text-dark p-4 text-center">
+                <h3 class="mb-3">Urmărește-ne pe Rețelele Sociale</h3>
+                <p class="lead mb-4">Fii la curent cu cele mai noi jucării, concursuri și evenimente!</p>
+                <div class="social-links">
+                    <a href="#" class="btn btn-outline-dark btn-lg mx-2 mb-3"><i class="fab fa-facebook-f me-2"></i>Facebook</a>
+                    <a href="#" class="btn btn-outline-dark btn-lg mx-2 mb-3"><i class="fab fa-instagram me-2"></i>Instagram</a>
+                    <a href="#" class="btn btn-outline-dark btn-lg mx-2 mb-3"><i class="fab fa-youtube me-2"></i>YouTube</a>
+                    <a href="#" class="btn btn-outline-dark btn-lg mx-2 mb-3"><i class="fab fa-tiktok me-2"></i>TikTok</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="mt-5 pt-3 text-center">
+        <h4 class="mb-3">Abonează-te la newsletter</h4>
+        <p>Primește cele mai recente știri, oferte exclusive și invitații la evenimente speciale.</p>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <input type="email" class="form-control" placeholder="Adresa ta de email">
+                    <button class="btn btn-toy" type="button">Abonează-te</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>// Validare formular
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    // Simulare trimitere formular
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Se trimite...';
+
+                    setTimeout(function() {
+                        submitBtn.innerHTML = '<i class="fas fa-check me-2"></i> Mesaj trimis cu succes!';
+
+                        setTimeout(function() {
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = originalText;
+                            contactForm.reset();
+                        }, 3000);
+                    }, 2000);
+                });
+            }
+
+            // Animație pentru carduri
+            const cards = document.querySelectorAll('.category-card, .store-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+                    this.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '';
+                });
+            });
+        });</script>
+}

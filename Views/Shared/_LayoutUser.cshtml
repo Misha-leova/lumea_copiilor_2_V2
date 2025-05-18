@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Lumea Jucăriilor</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/tameplate.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lumea-jucariilor.styles.css" asp-append-version="true" />
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="UserPages" asp-action="First">
+                    <i class="fas fa-teddy-bear mr-2"></i> Lumea Jucăriilor
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="UserPages" asp-action="First">Acasă</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="UserPages" asp-action="Market">Magazin</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="UserPages" asp-action="News">Noutăți</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="UserPages" asp-action="Promotions">Promoții</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="UserPages" asp-action="Contact">Contacte</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex">
+                        <a class="btn btn-toy me-2" asp-controller="UserPages" asp-action="User">
+                            <i class="fas fa-user"></i> Contul meu
+                        </a>
+                        <a class="btn btn-toy" asp-controller="UserPages" asp-action="Cart">
+                            <i class="fas fa-shopping-cart"></i> Coș
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer text-white mt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Lumea Jucăriilor</h5>
+                    <p>Locul perfect pentru a găsi bucurie și distracție pentru copilul tău!</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Link-uri rapide</h5>
+                    <ul class="list-unstyled">
+                        <li><a asp-area="" asp-controller="Home" asp-action="Despre">Despre noi</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Privacy">Politica de confidențialitate</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Livrare">Livrare și Returnare</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="FAQ">Întrebări frecvente</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contactează-ne</h5>
+                    <address>
+                        <strong>Adresă:</strong> Strada Jucăriilor nr. 123, București<br>
+                        <strong>Telefon:</strong> 0712 345 678<br>
+                        <strong>Email:</strong> <a href="mailto:contact@lumeajucariilor.ro">contact@lumeajucariilor.ro</a>
+                    </address>
+                </div>
+            </div>
+            <hr class="bg-white">
+            <div class="d-flex justify-content-between">
+                <div>
+                    &copy; 2025 - Lumea Jucăriilor - Toate drepturile rezervate
+                </div>
+                <div class="social-icons">
+                    <a href="#" class="me-2"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="me-2"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="me-2"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

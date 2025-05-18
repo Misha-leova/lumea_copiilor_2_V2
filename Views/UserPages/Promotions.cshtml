@@ -1,0 +1,124 @@
+﻿@{
+    ViewData["Title"] = "Promoții";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+
+}
+
+<div class="promotii-hero my-4">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h1 class="display-4 fw-bold text-primary">Oferte Speciale</h1>
+                <p class="lead">Descoperă reducerile și promoțiile active la jucăriile preferate!</p>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="https://img.freepik.com/free-photo/3d-delivery-robot-working_23-2151150069.jpg" alt="Promoții jucării" class="img-fluid rounded shadow-lg" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <!-- Promoția Săptămânii -->
+    <div class="category-card bg-primary text-white p-4 rounded-3 mb-4">
+        <div class="row align-items-center">
+            <div class="col-md-3 text-center">
+                <i class="fas fa-percentage fa-5x mb-3 d-md-none"></i>
+                <i class="fas fa-percentage fa-7x d-none d-md-block"></i>
+            </div>
+            <div class="col-md-6">
+                <h2 class="mb-3">Super Weekendul Reducerilor</h2>
+                <p class="lead mb-2">Bucură-te de reduceri de până la 50% la toate jucăriile educative!</p>
+                <p><i class="fas fa-calendar-alt me-2"></i> 15-17 Martie 2025</p>
+            </div>
+            <div class="col-md-3 text-center">
+                <a href="#" class="btn btn-light btn-lg px-4">
+                    Vezi Ofertele
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Promoții Active -->
+    <h3 class="mb-4 text-center">Promoții Active</h3>
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="category-card h-100">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/LEGO_logo.svg/640px-LEGO_logo.svg.png" alt="Promoție LEGO" class="img-fluid h-100" style="object-fit: cover;" />
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h4 class="card-title">2+1 Gratuit la Jucării LEGO</h4>
+                            <p class="card-text">La achiziția a două seturi LEGO, primești gratuit al treilea set (de valoare egală sau mai mică).</p>
+                            <p class="card-text mb-2"><i class="fas fa-calendar-alt me-2"></i> Până pe 31 Martie 2025</p>
+                            <a href="#" class="btn btn-toy">Cumpără acum</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 mb-4">
+            <div class="category-card h-100">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="https://m.media-amazon.com/images/I/71iA6t1ERnL.jpg" alt="Jucării bebeluși" class="img-fluid h-100" style="object-fit: cover;" />
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h4 class="card-title">30% Reducere la Jucării pentru Bebeluși</h4>
+                            <p class="card-text">Profită de reduceri speciale la toată gama de jucării pentru bebeluși și copii de până la 3 ani.</p>
+                            <p class="card-text mb-2"><i class="fas fa-calendar-alt me-2"></i> Până pe 20 Martie 2025</p>
+                            <a href="#" class="btn btn-toy">Explorează colecția</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Vouchere Cadou -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="category-card bg-accent text-dark p-4 text-center">
+                <h3 class="mb-3">Voucher Cadou pentru Ziua Copilului</h3>
+                <p class="lead mb-3">Achiziționează un voucher în valoare de 200 lei și primești credit suplimentar de 50 lei!</p>
+                <a href="#" class="btn btn-dark btn-lg px-5">Cumpără Voucherul</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Newsletter -->
+    <div class="mt-5 pt-3 text-center">
+        <h4 class="mb-3">Nu rata nicio promoție!</h4>
+        <p>Abonează-te la newsletter și vei fi primul care află despre noile reduceri.</p>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <input type="email" class="form-control" placeholder="Adresa ta de email">
+                    <button class="btn btn-toy" type="button">Abonează-te</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Animație simplă pentru elementele promoționale
+        document.addEventListener('DOMContentLoaded', function() {
+            const promoItems = document.querySelectorAll('.category-card');
+            promoItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.transition = 'transform 0.3s ease';
+                });
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+}

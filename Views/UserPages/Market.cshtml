@@ -1,0 +1,243 @@
+﻿@{
+    ViewData["Title"] = "Acasă";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+
+}
+
+<!-- Hero Section -->
+<section class="hero-section text-center">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-4">Bine ai venit în Lumea Jucăriilor!</h1>
+        <p class="lead mb-4">Descoperă colecția noastră magică de jucării pentru toate vârstele</p>
+        <div class="d-flex justify-content-center gap-3">
+            <a href="#categorii" class="btn btn-toy btn-lg">Explorează Jucăriile</a>
+            <a href="#promotii" class="btn btn-light btn-lg">Vezi Promoțiile</a>
+        </div>
+    </div>
+</section>
+
+
+<!-- Featured Products -->
+@model List<lumea_copiilor_2.Models.Product>
+
+<section id="produse-populare" class="my-5 py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Cele Mai Populare Jucării</h2>
+
+        <div class="row">
+            @foreach (var product in Model)
+            {
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="card h-100 product-card border-0 shadow-sm">
+                        <span class="badge bg-danger position-absolute" style="top: 10px; right: 10px;">-20%</span>
+                        <img src="@product.ImageUrl" class="card-img-top" alt="@product.Name">
+                        <div class="card-body">
+                            <h5 class="card-title">@product.Name</h5>
+                            <div class="d-flex text-warning mb-2">
+                                @for (int star = 1; star <= 5; star++)
+                                {
+                                    <i class="fas fa-star"></i>
+                                }
+                                <span class="text-muted ms-2">(24)</span>
+                            </div>
+                            <p class="card-text">@product.Description</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <div>
+                                    <span class="text-muted text-decoration-line-through">@((product.Price + 30).ToString("C"))</span>
+                                    <span class="ms-2 fw-bold text-danger">@product.Price.ToString("C")</span>
+                                </div>
+                                <button class="btn btn-toy btn-sm btn-add-to-cart"
+                                        data-name="@product.Name"
+                                        data-price="@product.Price"
+                                        data-image="@product.ImageUrl">
+                                    <i class="fas fa-shopping-cart me-1"></i> Adaugă
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="#" class="btn btn-outline-primary btn-lg">Vezi Toate Produsele</a>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Testimonials -->
+<section class="my-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Ce Spun Clienții Noștri</h2>
+
+        <div class="row">
+            @foreach (var testimonial in new[]
+            {
+                new { Name = "Maria P.", Text = "Jucării de calitate și livrare rapidă. Copilul meu este foarte încântat de setul de constructie LEGO!" },
+                new { Name = "Andrei C.", Text = "Cel mai bun magazin de jucării! Prețuri bune și o varietate imensă de produse pentru toate vârstele." },
+                new { Name = "Elena D.", Text = "Serviciu clienți excelent! Au rezolvat rapid o problemă cu comanda mea și au oferit un discount pentru următoarea achiziție." }
+            })
+            {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="d-flex text-warning mb-3">
+                            @for (int i = 0; i < 5; i++)
+                                {
+                            <i class="fas fa-star"></i>
+                                }
+                        </div>
+                        <p class="card-text">@testimonial.Text</p>
+                    </div>
+                    <div class="card-footer bg-white">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-user-circle fa-2x text-secondary me-3"></i>
+                            <h5 class="mb-0">@testimonial.Name</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter -->
+<section class="py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <h2>Abonează-te la Newsletter</h2>
+                <p class="lead">Primește noutăți despre produsele și promoțiile noastre direct în inbox!</p>
+            </div>
+            <div class="col-lg-6">
+                <form class="d-flex">
+                    <input type="email" class="form-control form-control-lg me-2" placeholder="Adresa ta de email">
+                    <button type="submit" class="btn btn-warning btn-lg">Abonează-te</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Benefits -->
+<section class="my-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-3 mb-4">
+                <div class="p-4">
+                    <i class="fas fa-truck fa-3x mb-3 text-primary"></i>
+                    <h4>Livrare Rapidă</h4>
+                    <p>În toată țara în 24-48 ore</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="p-4">
+                    <i class="fas fa-undo fa-3x mb-3 text-primary"></i>
+                    <h4>Retur Gratuit</h4>
+                    <p>În 30 de zile de la achiziție</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="p-4">
+                    <i class="fas fa-lock fa-3x mb-3 text-primary"></i>
+                    <h4>Plată Sigură</h4>
+                    <p>Sisteme sigure de plată online</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="p-4">
+                    <i class="fas fa-headset fa-3x mb-3 text-primary"></i>
+                    <h4>Suport 24/7</h4>
+                    <p>Asistență clienți non-stop</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CSS Styles specifically for this page -->
+<style>
+    .product-card {
+        transition: transform 0.3s, box-shadow 0.3s;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+    }
+
+    .hero-section {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        border-radius: 0 0 30% 30% / 20%;
+        padding: 100px 0 120px;
+        margin-bottom: 50px;
+    }
+
+    .promo-card {
+        transition: transform 0.3s;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .promo-card:hover {
+        transform: scale(1.03);
+    }
+
+    #categorii h2::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 4px;
+        background-color: var(--accent-color);
+        margin: 15px auto 0;
+    }
+
+    @@media (max-width: 768px) {
+        .hero-section {
+            padding: 60px 0 80px;
+            border-radius: 0 0 15% 15% / 10%;
+        }
+    }
+</style>
+
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cartKey = 'cartItems';
+
+            function getCartItems() {
+                return JSON.parse(localStorage.getItem(cartKey)) || [];
+            }
+
+            function saveCartItems(items) {
+                localStorage.setItem(cartKey, JSON.stringify(items));
+            }
+
+            document.querySelectorAll('.btn-add-to-cart').forEach(button => {
+                button.addEventListener('click', () => {
+                    const id = button.dataset.id;
+                    const name = button.dataset.name;
+                    const price = parseFloat(button.dataset.price);
+                    const image = button.dataset.image;
+
+                    let cart = getCartItems();
+                    let existing = cart.find(item => item.id === id);
+
+                    if (existing) {
+                        existing.qty += 1;
+                    } else {
+                        cart.push({ id, name, price, image, qty: 1 });
+                    }
+
+                    saveCartItems(cart);
+                    alert("Produs adăugat în coș!");
+                });
+            });
+        });
+    </script>
+}

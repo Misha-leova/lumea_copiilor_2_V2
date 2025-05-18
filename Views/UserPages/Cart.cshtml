@@ -1,0 +1,371 @@
+﻿@{
+    ViewData["Title"] = "Coș de Cumpărături";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div class="container py-4">
+
+    <!-- Breadcrumb (opțional) -->
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a asp-controller="Home" asp-action="Index">Acasă</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Coș de Cumpărături</li>
+        </ol>
+    </nav>
+
+    <h1 class="mb-4">Coșul Tău de Cumpărături</h1>
+
+    <!-- Zona principală: tabel cu produsele din coș și sumarul -->
+    <div class="row">
+        <!-- Listă produse -->
+        <div class="col-lg-8 mb-4">
+            <div class="category-card p-4 h-100">
+                <h2 class="text-primary mb-4">Produse Adăugate</h2>
+
+                <!-- Tabel coș -->
+                <div class="table-responsive">
+                    <table class="table align-middle table-striped" id="cartTable">
+                        <thead>
+                            <tr>
+                                <th>Produs</th>
+                                <th class="text-center">Preț Unitar</th>
+                                <th class="text-center">Cantitate</th>
+                                <th class="text-end">Subtotal</th>
+                                <th class="text-end">Acțiuni</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cartBody">
+                            <!-- Exemplu item 1 -->
+                            <tr data-item-id="1">
+                                <td class="d-flex align-items-center">
+                                    <img src="/api/placeholder/60/60" alt="Jucarie1" class="rounded me-3" width="60" height="60" />
+                                    <div>
+                                        <p class="mb-0 fw-semibold">Jucărie Interactivă</p>
+                                        <small class="text-muted">Cod produs: ABC123</small>
+                                    </div>
+                                </td>
+                                <td class="text-center">59,00 RON</td>
+                                <td class="text-center">
+                                    <div class="input-group input-group-sm justify-content-center" style="max-width: 100px;">
+                                        <button class="btn btn-outline-secondary btn-sm btn-qty-minus" type="button">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <input type="text" class="form-control text-center input-qty" value="2" />
+                                        <button class="btn btn-outline-secondary btn-sm btn-qty-plus" type="button">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                                <td class="text-end fw-bold subtotal-cell">118,00 RON</td>
+                                <td class="text-end">
+                                    <button class="btn btn-sm btn-outline-danger btn-remove" type="button">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Exemplu item 2 -->
+                            <tr data-item-id="2">
+                                <td class="d-flex align-items-center">
+                                    <img src="/api/placeholder/60/60" alt="Puzzle" class="rounded me-3" width="60" height="60" />
+                                    <div>
+                                        <p class="mb-0 fw-semibold">Puzzle 3D</p>
+                                        <small class="text-muted">Cod produs: XYZ789</small>
+                                    </div>
+                                </td>
+                                <td class="text-center">45,00 RON</td>
+                                <td class="text-center">
+                                    <div class="input-group input-group-sm justify-content-center" style="max-width: 100px;">
+                                        <button class="btn btn-outline-secondary btn-sm btn-qty-minus" type="button">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <input type="text" class="form-control text-center input-qty" value="1" />
+                                        <button class="btn btn-outline-secondary btn-sm btn-qty-plus" type="button">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                                <td class="text-end fw-bold subtotal-cell">45,00 RON</td>
+                                <td class="text-end">
+                                    <button class="btn btn-sm btn-outline-danger btn-remove" type="button">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Poți adăuga și alte produse similare -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="text-end">
+                    <button class="btn btn-secondary" id="btnUpdateCart">
+                        <i class="fas fa-sync-alt me-2"></i>Actualizează Coș
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sumary coș / secțiune de checkout -->
+        <div class="col-lg-4">
+            <div class="category-card p-4">
+                <h2 class="text-primary mb-4">Sumar Comandă</h2>
+
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span>Subtotal</span>
+                    <span id="cartSubtotal" class="fw-bold">163,00 RON</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span>Transport</span>
+                    <span id="shippingCost">15,00 RON</span>
+                </div>
+                <hr />
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <span class="fs-5 fw-semibold">Total</span>
+                    <span id="cartTotal" class="fs-5 fw-bold">178,00 RON</span>
+                </div>
+
+                <!-- Cupoane / Vouchere (opțional) -->
+                <div class="mb-4">
+                    <label for="couponCode" class="form-label">Cod Reducere (opțional)</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="couponCode" placeholder="Ex: REDUCERE2025" />
+                        <button class="btn btn-outline-secondary" type="button" id="btnApplyCoupon">
+                            Aplică
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Buton de checkout -->
+                <div class="text-center">
+                    <a asp-controller="Checkout" asp-action="Index" class="btn btn-toy btn-lg w-100 mb-3">
+                        <i class="fas fa-credit-card me-2"></i>Continuă spre Plată
+                    </a>
+                    <a asp-controller="Shop" asp-action="Index" class="btn btn-outline-primary w-100">
+                        <i class="fas fa-arrow-left me-2"></i>Continuă Cumpărăturile
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>document.addEventListener('DOMContentLoaded', function() {
+
+            const cartTable = document.getElementById('cartTable');
+            const btnUpdateCart = document.getElementById('btnUpdateCart');
+            const shippingCostEl = document.getElementById('shippingCost');
+            const cartSubtotalEl = document.getElementById('cartSubtotal');
+            const cartTotalEl = document.getElementById('cartTotal');
+
+            // Funcție pentru a recalcula subtotalul unei linii
+            function recalcRowSubtotal(row) {
+                // Preț unitar
+                const priceText = row.querySelector('td:nth-child(2)').innerText;
+                // Ex: "59,00 RON" -> extragem numărul
+                const priceNumber = parseFloat(priceText.replace(',', '.').replace(/[^\d.]/g, '')) || 0;
+
+                // Cantitate
+                const qtyInput = row.querySelector('.input-qty');
+                const qty = parseInt(qtyInput.value) || 1;
+
+                // Calculează subtotal
+                const subtotal = priceNumber * qty;
+
+                // Setează text
+                const subtotalCell = row.querySelector('.subtotal-cell');
+                subtotalCell.textContent = subtotal.toFixed(2).replace('.', ',') + ' RON';
+            }
+
+            // Funcție pentru a recalcula subtotalul întregului coș
+            function recalcCartSubtotal() {
+                let cartSubtotal = 0;
+                const rows = cartTable.querySelectorAll('tbody tr');
+                rows.forEach(row => {
+                    const subtotalCell = row.querySelector('.subtotal-cell');
+                    if (subtotalCell) {
+                        const subtotalText = subtotalCell.innerText;
+                        const subtotalNumber = parseFloat(
+                            subtotalText.replace(',', '.').replace(/[^\d.]/g, '')
+                        ) || 0;
+                        cartSubtotal += subtotalNumber;
+                    }
+                });
+                // Actualizează în UI
+                cartSubtotalEl.textContent = cartSubtotal.toFixed(2).replace('.', ',') + ' RON';
+                // Returnează pentru a calcula totalul
+                return cartSubtotal;
+            }
+
+            // Funcție pentru recalcularea totalului
+            function recalcCartTotal() {
+                const shippingText = shippingCostEl.innerText;
+                const shippingNumber = parseFloat(
+                    shippingText.replace(',', '.').replace(/[^\d.]/g, '')
+                ) || 0;
+                const subtotalNumber = recalcCartSubtotal();
+                const total = subtotalNumber + shippingNumber;
+                cartTotalEl.textContent = total.toFixed(2).replace('.', ',') + ' RON';
+            }
+
+            // Event: +/- cantitate
+            if (cartTable) {
+                cartTable.addEventListener('click', function(e) {
+                    // Buton minus
+                    if (e.target.closest('.btn-qty-minus')) {
+                        const row = e.target.closest('tr');
+                        const qtyInput = row.querySelector('.input-qty');
+                        let currentQty = parseInt(qtyInput.value) || 1;
+                        if (currentQty > 1) {
+                            qtyInput.value = currentQty - 1;
+                            recalcRowSubtotal(row);
+                            recalcCartTotal();
+                        }
+                    }
+                    // Buton plus
+                    if (e.target.closest('.btn-qty-plus')) {
+                        const row = e.target.closest('tr');
+                        const qtyInput = row.querySelector('.input-qty');
+                        let currentQty = parseInt(qtyInput.value) || 1;
+                        qtyInput.value = currentQty + 1;
+                        recalcRowSubtotal(row);
+                        recalcCartTotal();
+                    }
+                    // Buton remove
+                    if (e.target.closest('.btn-remove')) {
+                        const row = e.target.closest('tr');
+                        row.remove();
+                        recalcCartTotal();
+                    }
+                });
+
+                // Dacă se modifică direct input-ul de cantitate
+                cartTable.addEventListener('change', function(e) {
+                    if (e.target.classList.contains('input-qty')) {
+                        const row = e.target.closest('tr');
+                        recalcRowSubtotal(row);
+                        recalcCartTotal();
+                    }
+                });
+            }
+
+            // Event: Actualizează coș (poți trimite date la server prin AJAX / form)
+            if (btnUpdateCart) {
+                btnUpdateCart.addEventListener('click', function() {
+                    alert("Coș actualizat (simulare). Într-o aplicație reală, trimite datele la server!");
+                });
+            }
+
+            // Apelăm recalcCartTotal la început
+            recalcCartTotal();
+
+            // Animație hover pentru carduri
+            const cards = document.querySelectorAll('.category-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+                    this.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '';
+                });
+            });
+
+        });</script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cartKey = 'cartItems';
+
+            function getCartItems() {
+                return JSON.parse(localStorage.getItem(cartKey)) || [];
+            }
+
+            function saveCartItems(items) {
+                localStorage.setItem(cartKey, JSON.stringify(items));
+            }
+
+            function renderCart() {
+                const cart = getCartItems();
+                const cartBody = document.getElementById('cartBody');
+                cartBody.innerHTML = '';
+
+                let subtotal = 0;
+
+                cart.forEach((item, index) => {
+                    const row = document.createElement('tr');
+                    const total = item.price * item.qty;
+                    subtotal += total;
+
+                    row.innerHTML = `
+                        <td class="d-flex align-items-center">
+                            <img src="${item.image}" class="rounded me-3" width="60" height="60">
+                            <div><p class="mb-0 fw-semibold">${item.name}</p></div>
+                        </td>
+                        <td class="text-center">${item.price.toFixed(2).replace('.', ',')} RON</td>
+                        <td class="text-center">
+                            <div class="input-group input-group-sm justify-content-center" style="max-width: 100px;">
+                                <button class="btn btn-outline-secondary btn-sm btn-qty-minus" data-index="${index}">-</button>
+                                <input type="text" class="form-control text-center input-qty" value="${item.qty}" data-index="${index}">
+                                <button class="btn btn-outline-secondary btn-sm btn-qty-plus" data-index="${index}">+</button>
+                            </div>
+                        </td>
+                        <td class="text-end fw-bold subtotal-cell">${total.toFixed(2).replace('.', ',')} RON</td>
+                        <td class="text-end">
+                            <button class="btn btn-sm btn-outline-danger btn-remove" data-index="${index}"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    `;
+                    cartBody.appendChild(row);
+                });
+
+                document.getElementById('cartSubtotal').textContent = subtotal.toFixed(2).replace('.', ',') + ' RON';
+                const shipping = 15;
+                document.getElementById('cartTotal').textContent = (subtotal + shipping).toFixed(2).replace('.', ',') + ' RON';
+            }
+
+            document.addEventListener('click', function (e) {
+                if (e.target.classList.contains('btn-qty-minus')) {
+                    const index = e.target.dataset.index;
+                    let cart = getCartItems();
+                    if (cart[index].qty > 1) cart[index].qty--;
+                    saveCartItems(cart);
+                    renderCart();
+                }
+
+                if (e.target.classList.contains('btn-qty-plus')) {
+                    const index = e.target.dataset.index;
+                    let cart = getCartItems();
+                    cart[index].qty++;
+                    saveCartItems(cart);
+                    renderCart();
+                }
+
+                if (e.target.classList.contains('btn-remove')) {
+                    const index = e.target.dataset.index;
+                    let cart = getCartItems();
+                    cart.splice(index, 1);
+                    saveCartItems(cart);
+                    renderCart();
+                }
+            });
+
+            document.addEventListener('change', function (e) {
+                if (e.target.classList.contains('input-qty')) {
+                    const index = e.target.dataset.index;
+                    let cart = getCartItems();
+                    let newQty = parseInt(e.target.value) || 1;
+                    cart[index].qty = newQty;
+                    saveCartItems(cart);
+                    renderCart();
+                }
+            });
+
+            renderCart();
+        });
+    </script>
+}
+
+
