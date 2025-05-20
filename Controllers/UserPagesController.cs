@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace lumea_copiilor_2.Controllers
 {
-    [Route("users")] // Base route for the controller
+    [Route("")] // Base route for the controller
     public class UserPagesController : Controller
     {
         [Route("")] // Schimbat de la "" la "house"
@@ -21,6 +21,12 @@ namespace lumea_copiilor_2.Controllers
             _context = context;
         }
 
+        [Route("cont")] // Handles "/user/cart"
+        public IActionResult cont()
+        {
+            return View();
+        }
+
         [Route("market")]
         public async Task<IActionResult> Market()
         {
@@ -31,17 +37,17 @@ namespace lumea_copiilor_2.Controllers
             return View(products);
         }
 
-        [Route("news")] // Handles "/user/news"
-        public IActionResult News()
-        {
-            // Fetch news items from the database
-            var newsItems = _context.News
-                .OrderByDescending(n => n.CreatedAt) // Sort by most recent first
-                .ToList();
+        [Route("news")]
+public IActionResult News()
+{
+    // Fetch only PUBLISHED news items from the database, ordered by most recent first
+    var publishedNews = _context.News
+        .Where(n => n.IsPublished)  // Filter only published news
+        .OrderByDescending(n => n.PublishedAt ?? n.CreatedAt) // Use PublishedAt if available, otherwise CreatedAt
+        .ToList();
 
-            // Pass the news items to the view
-            return View(newsItems);
-        }
+    return View(publishedNews);
+}
 
         [Route("promotions")] // Handles "/user/promotions"
         public IActionResult Promotions()
@@ -83,5 +89,6 @@ namespace lumea_copiilor_2.Controllers
 
             return View();
         }
+       
     }
 }

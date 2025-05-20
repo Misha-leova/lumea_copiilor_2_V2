@@ -1,8 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Noutăți";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
-
 }
+
 <style>
     .profile-image {
         width: 50px; /* Set the desired width */
@@ -10,10 +10,8 @@
         object-fit: cover; /* Ensures the image covers the area without distortion */
         border-radius: 50%; /* Keeps the image circular */
     }
-  
-
-    }
 </style>
+
 <div class="noutati-hero my-4">
     <div class="row align-items-center">
         <div class="col-md-6">
@@ -54,31 +52,25 @@
             </div>
 
             <div class="row">
-                @foreach (var newsItem in Model) // Assuming Model is a list of News objects
+                @foreach (var newsItem in Model)
                 {
                     <div class="col-md-4 mb-4">
                         <div class="news-card h-100">
-                            <div class="position-relative">
-                                @if (newsItem.IsPublished)
-                                {
-                                    <span class="position-absolute top-0 start-0 bg-success text-white p-2 m-2 rounded-pill">Publicat</span>
-                                }
-                                else
-                                {
-                                    <span class="position-absolute top-0 start-0 bg-warning text-white p-2 m-2 rounded-pill">Nepublicat</span>
-                                }
-                            </div>
-                            <br />
-                            <br />
-
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center mb-2">
-                                    
                                     <h5 class="card-title mb-0">@newsItem.Title</h5>
-                                    <small class="text-muted">@newsItem.CreatedAt.ToString("dd MMM yyyy")</small>
+                                    <small class="text-muted">
+                                        @{
+                                            // Fixed the HasValue issue by checking against default DateTime
+                                            var displayDate = newsItem.PublishedAt != default(DateTime)
+                                            ? newsItem.PublishedAt.ToString("dd MMM yyyy")
+                                            : newsItem.CreatedAt.ToString("dd MMM yyyy");
+                                        }
+                                        @displayDate
+                                    </small>
                                 </div>
                                 <p class="card-text">@newsItem.Content</p>
-                              
+
                                 <hr>
                                 <div class="d-grid gap-2">
                                     <a href="#" class="btn btn-primary">
@@ -239,7 +231,6 @@
         </div>
 
         <!-- Blog -->
-        <!-- Blog -->
         <div class="tab-pane fade" id="blog" role="tabpanel" aria-labelledby="blog-tab">
             <div class="row">
                 <div class="col-md-8">
@@ -288,15 +279,6 @@
                             </div>
                         </div>
                     </article>
-                </div>
-            </div>
-        </div>
-
-               
-
-                   
-
-                   
                 </div>
             </div>
         </div>

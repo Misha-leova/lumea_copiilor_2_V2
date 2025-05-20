@@ -1,0 +1,220 @@
+﻿@{
+    ViewData["Title"] = "Login / Register";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+    <style>
+        body {
+            background-color: #f8f9fa;
+            height: 100vh;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-top: 100px;
+        }
+        .form-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .btn-custom {
+            background-color: #4e73df;
+            border-color: #4e73df;
+            width: 100%;
+            padding: 10px;
+        }
+        .btn-custom:hover {
+            background-color: #2e59d9;
+            border-color: #2e59d9;
+        }
+        .toggle-forms {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .logout-container {
+            display: none;
+            text-align: center;
+        }
+        .register-container {
+            display: none;
+        }
+        .welcome-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .profile-img i {
+            font-size: 50px;
+            color: #6c757d;
+        }
+    </style>
+   
+
+    <!-- Login Container -->
+    <div class="container form-container" id="loginForm">
+        <h2 class="form-title">Autentificare</h2>
+        <form>
+            <div class="mb-3">
+                <label for="loginEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" id="loginEmail" placeholder="Introduceți email-ul" required>
+            </div>
+            <div class="mb-3">
+                <label for="loginPassword" class="form-label">Parolă</label>
+                <input type="password" class="form-control" id="loginPassword" placeholder="Introduceți parola" required>
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="remember">
+                <label class="form-check-label" for="remember">Ține-mă minte</label>
+            </div>
+            <button type="button" class="btn btn-primary btn-custom" onclick="login()">Autentificare</button>
+            <div class="text-center mt-3">
+                <a href="#" class="text-decoration-none">Ai uitat parola?</a>
+            </div>
+            <div class="toggle-forms">
+                <p>Nu ai cont? <a href="#" onclick="showRegisterForm()">Înregistrează-te acum</a></p>
+            </div>
+        </form>
+    </div>
+
+    <!-- Register Container -->
+    <div class="container form-container register-container" id="registerForm">
+        <h2 class="form-title">Înregistrare</h2>
+        <form>
+            <div class="mb-3">
+                <label for="registerName" class="form-label">Nume complet</label>
+                <input type="text" class="form-control" id="registerName" placeholder="Introduceți numele complet" required>
+            </div>
+            <div class="mb-3">
+                <label for="registerEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" id="registerEmail" placeholder="Introduceți email-ul" required>
+            </div>
+            <div class="mb-3">
+                <label for="registerPassword" class="form-label">Parolă</label>
+                <input type="password" class="form-control" id="registerPassword" placeholder="Introduceți parola" required>
+            </div>
+            <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Confirmă parola</label>
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirmă parola" required>
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="termsAgree">
+                <label class="form-check-label" for="termsAgree">Sunt de acord cu <a href="#">termenii și condițiile</a></label>
+            </div>
+            <button type="button" class="btn btn-success btn-custom" onclick="register()">Înregistrare</button>
+            <div class="toggle-forms">
+                <p>Ai deja cont? <a href="#" onclick="showLoginForm()">Autentifică-te aici</a></p>
+            </div>
+        </form>
+    </div>
+
+    <!-- Logout Container -->
+    <div class="container form-container logout-container" id="logoutForm">
+        <div class="profile-img">
+            <i class="bi bi-person-fill"></i>
+        </div>
+        <h3 class="welcome-text">Bine ai venit, <span id="userName">Utilizator</span>!</h3>
+        <p class="mb-4">Te-ai autentificat cu succes</p>
+        <button type="button" class="btn btn-danger w-100" onclick="logout()">Deconectare</button>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Toggle between forms
+        function showLoginForm() {
+            document.getElementById('registerForm').style.display = 'none';
+            document.getElementById('logoutForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'block';
+        }
+        
+        function showRegisterForm() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('logoutForm').style.display = 'none';
+            document.getElementById('registerForm').style.display = 'block';
+        }
+        
+        // Login function
+        function login() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            // Simple validation
+            if (email.trim() === '' || password.trim() === '') {
+                alert('Vă rugăm completați toate câmpurile!');
+                return;
+            }
+            
+            // Simulate successful login
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('logoutForm').style.display = 'block';
+            
+            // Display username (in a real app this would come from the server)
+            const userName = email.split('gmail')[0];
+            document.getElementById('userName').textContent = userName;
+        }
+        
+        // Register function
+        function register() {
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const termsAgree = document.getElementById('termsAgree').checked;
+            
+            // Simple validation
+            if (name.trim() === '' || email.trim() === '' || password.trim() === '' || confirmPassword.trim() === '') {
+                alert('Vă rugăm completați toate câmpurile!');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                alert('Parolele nu se potrivesc!');
+                return;
+            }
+            
+            if (!termsAgree) {
+                alert('Trebuie să fiți de acord cu termenii și condițiile!');
+                return;
+            }
+            
+            // Simulate successful registration
+            alert('Înregistrare reușită! Acum te poți autentifica.');
+            showLoginForm();
+        }
+        
+        // Logout function
+        function logout() {
+            // Simulate logout
+            showLoginForm();
+            
+            // Reset forms
+            document.getElementById('loginEmail').value = '';
+            document.getElementById('loginPassword').value = '';
+            document.getElementById('remember').checked = false;
+            
+            document.getElementById('registerName').value = '';
+            document.getElementById('registerEmail').value = '';
+            document.getElementById('registerPassword').value = '';
+            document.getElementById('confirmPassword').value = '';
+            document.getElementById('termsAgree').checked = false;
+        }
+    </script>
