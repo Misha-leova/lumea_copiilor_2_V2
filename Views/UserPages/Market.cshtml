@@ -75,30 +75,30 @@
         <div class="row">
             @foreach (var testimonial in new[]
             {
-                new { Name = "Maria P.", Text = "Jucării de calitate și livrare rapidă. Copilul meu este foarte încântat de setul de constructie LEGO!" },
-                new { Name = "Andrei C.", Text = "Cel mai bun magazin de jucării! Prețuri bune și o varietate imensă de produse pentru toate vârstele." },
-                new { Name = "Elena D.", Text = "Serviciu clienți excelent! Au rezolvat rapid o problemă cu comanda mea și au oferit un discount pentru următoarea achiziție." }
+            new { Name = "Maria P.", Text = "Jucării de calitate și livrare rapidă. Copilul meu este foarte încântat de setul de constructie LEGO!" },
+            new { Name = "Andrei C.", Text = "Cel mai bun magazin de jucării! Prețuri bune și o varietate imensă de produse pentru toate vârstele." },
+            new { Name = "Elena D.", Text = "Serviciu clienți excelent! Au rezolvat rapid o problemă cu comanda mea și au oferit un discount pentru următoarea achiziție." }
             })
             {
-            <div class="col-md-4 mb-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body">
-                        <div class="d-flex text-warning mb-3">
-                            @for (int i = 0; i < 5; i++)
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex text-warning mb-3">
+                                @for (int i = 0; i < 5; i++)
                                 {
-                            <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
                                 }
+                            </div>
+                            <p class="card-text">@testimonial.Text</p>
                         </div>
-                        <p class="card-text">@testimonial.Text</p>
-                    </div>
-                    <div class="card-footer bg-white">
-                        <div class="d-flex align-items-center">
-                            <i class="fas fa-user-circle fa-2x text-secondary me-3"></i>
-                            <h5 class="mb-0">@testimonial.Name</h5>
+                        <div class="card-footer bg-white">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-user-circle fa-2x text-secondary me-3"></i>
+                                <h5 class="mb-0">@testimonial.Name</h5>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             }
         </div>
     </div>
@@ -166,10 +166,10 @@
         overflow: hidden;
     }
 
-    .product-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
-    }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+        }
 
     .hero-section {
         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
@@ -183,9 +183,9 @@
         box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
-    .promo-card:hover {
-        transform: scale(1.03);
-    }
+        .promo-card:hover {
+            transform: scale(1.03);
+        }
 
     #categorii h2::after {
         content: '';
@@ -259,16 +259,13 @@
 
     /* Responsive adjustments */
     @@media (max-width: 768px) {
-        .product-card .card-img-top
+        .product-card .card-img-top {
+            height: 180px;
+        }
 
-    {
-        height: 180px;
-    }
-
-    .product-card .card-body {
-        height: 180px;
-    }
-
+        .product-card .card-body {
+            height: 180px;
+        }
     }
 </style>
 
